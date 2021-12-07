@@ -24,10 +24,10 @@ namespace DIO.Series
                         AtualizarSeries();
                         break;
                     case "4":
-                        ExcluirSeries();
+                        ExcluirSerie();
                         break;
                     case "5":
-                        //VisualizarSeries();
+                        VisualizarSerie();
                         break;
                     case "C":
                         Console.Clear();
@@ -67,7 +67,7 @@ namespace DIO.Series
             }
             foreach (var serie in lista)
             {   
-                Console.WriteLine("#ID {0}: - {1}", serie.retornaId(), serie.retornaTitulo());   
+                Console.WriteLine("#ID {0}: - {1} - {2}", serie.retornaId(), serie.retornaTitulo(), (serie.retornaExcluido() ? "Excluido" : " "));   
             }
 
         }
@@ -133,6 +133,16 @@ namespace DIO.Series
 			int indiceSerie = int.Parse(Console.ReadLine());
 
 			repositorio.Excluir(indiceSerie);
+		}
+
+        private static void VisualizarSerie()
+		{
+			Console.Write("Digite o id da série: ");
+			int indiceSerie = int.Parse(Console.ReadLine());
+
+			var serie = repositorio.RetornaPorId(indiceSerie);
+
+			Console.WriteLine(serie);
 		}
 
     }
