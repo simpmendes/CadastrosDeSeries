@@ -24,7 +24,7 @@ namespace DIO.Series
                         AtualizarSeries();
                         break;
                     case "4":
-                        //ExcluirSeries();
+                        ExcluirSeries();
                         break;
                     case "5":
                         //VisualizarSeries();
@@ -125,6 +125,14 @@ namespace DIO.Series
 										descricao: entradaDescricao);
 
 			repositorio.Atualiza(indiceSerie, atualizaSerie);
+		}
+
+        private static void ExcluirSerie()
+		{
+			Console.Write("Digite o id da série: ");
+			int indiceSerie = int.Parse(Console.ReadLine());
+
+			repositorio.Excluir(indiceSerie);
 		}
 
     }
